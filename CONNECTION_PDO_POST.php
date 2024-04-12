@@ -40,9 +40,9 @@ echo '</pre>';
 
 while($lista = $stmt->fetchAll(PDO::FETCH_ASSOC)){
 
-     '<pre>';
+   echo  '<pre>';
         print_r($lista);
-     '</pre>';
+   echo  '</pre>';
 }
 
 $conn = null;
