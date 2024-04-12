@@ -15,7 +15,11 @@ if (empty($_POST["firstname"]) || empty($_POST["lastname"]) || empty($_POST["ema
 
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-  /* set the PDO error mode to exception */
+  /* set the PDO error mode to exception 
+
+  Comentários de várias linhas em PHP
+  
+  */
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
   $stmt = $conn->prepare("INSERT INTO MyGuests (id, firstname, lastname, email) VALUES (:id, :firstname, :lastname, :email)");
