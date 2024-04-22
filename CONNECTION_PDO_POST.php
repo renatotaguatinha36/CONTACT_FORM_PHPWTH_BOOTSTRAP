@@ -152,5 +152,14 @@ try {
   echo $sql . "<br>" . $e->getMessage();
 }
 
+
+while($lista = $stmt->fetchAll(PDO::FETCH_ASSOC)){
+
+  echo  '<pre>';
+       print_r($lista);
+  echo  '</pre>';
+}
+
+
 $conn = null;
 ?>
