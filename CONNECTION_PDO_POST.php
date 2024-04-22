@@ -39,7 +39,7 @@ try {
 } catch(PDOException $e) {
   echo  "</br>" . $e->getMessage() . "</br>" . $e->getCode() .'<br>'. $e->getTraceAsString();
 }
-$querySQL = 'SELECT * from tb_usuarios';
+$querySQL = "SELECT * from tb_usuarios";
 
 $stmt = $conn->query($querySQL); //PDO Statemet
 $lista = $stmt->fetchAll(PDO::FETCH_ASSOC); //retorno associativo 
