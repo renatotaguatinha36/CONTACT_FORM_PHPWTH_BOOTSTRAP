@@ -120,7 +120,11 @@ try {
   
   $sql = "INSERT INTO MyGuests (firstname, lastname, email) VALUES ('John', 'Doe', 'john@example.com')";
   // use exec() because no results are returned
-  $conn->exec($sql);
+  //$conn->exec($sql);
+
+  // Prepare statement
+  $stmt = $conn->prepare($sql);
+
   $last_id = $conn->lastInsertId();
   echo "New record created successfully. Last inserted ID is: " . $last_id;
 } catch(PDOException $e) {
@@ -161,7 +165,9 @@ try {
   $sql = "DELETE FROM MyGuests WHERE id=3";
 
   // use exec() because no results are returned
-  $conn->exec($sql);
+  //$conn->exec($sql);
+  // Prepare statement
+  $stmt = $conn->prepare($sql);
   echo "Record deleted successfully";
 } catch(PDOException $e) {
   echo $sql . "<br>" . $e->getMessage();
