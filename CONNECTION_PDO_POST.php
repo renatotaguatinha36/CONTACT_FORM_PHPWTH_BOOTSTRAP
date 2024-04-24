@@ -119,6 +119,12 @@ try {
   $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
   
   $sql = "INSERT INTO MyGuests (firstname, lastname, email) VALUES ('John', 'Doe', 'john@example.com')";
+  $stmt = $conn->prepare("INSERT INTO MyGuests (id, firstname, lastname, email) VALUES (:id, :firstname, :lastname, :email)");
+  $stmt->bindValue(':firstname', $firstname, PDO::PARAM_STR);
+  $stmt->bindValue(':lastname', $lastname, PDO::PARAM_STR);
+  $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+  $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+  
   // use exec() because no results are returned
   //$conn->exec($sql);
 
