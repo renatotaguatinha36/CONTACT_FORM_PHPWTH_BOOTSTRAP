@@ -176,6 +176,7 @@ try {
   //$conn->exec($sql);
   // Prepare statement
   $stmt = $conn->prepare($sql);
+  $stmt = $conn->prepare("DELETE FROM MyGuests WHERE id=3");
   echo "Record deleted successfully";
 } catch(PDOException $e) {
   echo $sql . "<br>" . $e->getMessage();
