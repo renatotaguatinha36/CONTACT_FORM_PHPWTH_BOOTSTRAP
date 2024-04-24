@@ -80,6 +80,7 @@ try {
 
   // Prepare statement
   $stmt = $conn->prepare($sql);
+  $stmt = $conn->prepare("UPDATE MyGuests SET lastname='Doe' WHERE id=2");
 
   // execute the query
   $stmt->execute();
