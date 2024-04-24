@@ -131,6 +131,8 @@ try {
 
   // Prepare statement
   $stmt = $conn->prepare("INSERT INTO MyGuests (id, firstname, lastname, email) VALUES (:id, :firstname, :lastname, :email)");
+
+  $sql = "INSERT INTO MyGuests (firstname, lastname, email) VALUES ('John', 'Doe', 'john@example.com')";
   $stmt = $conn->prepare($sql);
 
   $last_id = $conn->lastInsertId();
