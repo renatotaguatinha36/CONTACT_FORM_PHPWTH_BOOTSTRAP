@@ -127,6 +127,7 @@ try {
   
   // use exec() because no results are returned
   //$conn->exec($sql);
+  $stmt->execute();
 
   // Prepare statement
   $stmt = $conn->prepare($sql);
