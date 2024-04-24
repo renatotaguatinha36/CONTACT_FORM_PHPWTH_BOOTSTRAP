@@ -135,7 +135,7 @@ try {
   $sql = "INSERT INTO MyGuests (firstname, lastname, email) VALUES ('John', 'Doe', 'john@example.com')";
   $stmt = $conn->prepare($sql);
 
-  $stmt->execute();
+  
 
   $last_id = $conn->lastInsertId();
   echo "New record created successfully. Last inserted ID is: " . $last_id;
@@ -146,11 +146,10 @@ try {
 
 while($lista = $stmt->fetchAll(PDO::FETCH_ASSOC)){
 
-  echo  '<pre>';
+  echo  "<pre>";
        print_r($lista);
-  echo  '</pre>';
+  echo  "</pre>";
 }
-
 
 
 $conn = null;
