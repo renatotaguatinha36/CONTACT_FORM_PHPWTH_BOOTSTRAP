@@ -42,6 +42,7 @@ try {
 $querySQL = "SELECT * from tb_usuarios";
 
 $stmt = $conn->query($querySQL); //PDO Statemet
+$stmt = $conn->prepare($querySQL); // Com método prepare()
 
 
 
