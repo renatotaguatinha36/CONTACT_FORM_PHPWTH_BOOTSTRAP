@@ -94,9 +94,9 @@ try {
 
 while($lista = $stmt->fetchAll(PDO::FETCH_ASSOC)){
 
-  echo  '<pre>';
+  echo  "<pre>";
        print_r($lista);
-  echo  '</pre>';
+  echo  "</pre>";
 }
 
 
