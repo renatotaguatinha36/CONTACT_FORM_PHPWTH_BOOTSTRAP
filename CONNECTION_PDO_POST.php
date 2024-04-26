@@ -49,6 +49,7 @@ $stmt = $conn->prepare($querySQL); // Com método prepare()
 $lista = $stmt->fetchAll(PDO::FETCH_ASSOC); //retorno associativo 
 echo '<pre>';
         print_r($lista);
+        print($lista);
 echo '</pre>';
 }
 
