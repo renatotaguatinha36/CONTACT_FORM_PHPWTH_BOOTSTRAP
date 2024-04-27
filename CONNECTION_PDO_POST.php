@@ -26,6 +26,8 @@ try {
   // Comentários de linha
   
    $firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_SPECIAL_CHARS);
+   $lastname = filter_var($_POST['lastname'], FILTER_SANITIZE_SPECIAL_CHARS);
+   $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
@@ -57,9 +59,9 @@ echo '</pre>';
 
 while($lista = $stmt->fetchAll(PDO::FETCH_ASSOC)){
 
-   echo  '<pre>';
+   echo  "<pre>";
         print_r($lista);
-   echo  '</pre>';
+   echo  "</pre>";
 }
 
 $conn = null;
