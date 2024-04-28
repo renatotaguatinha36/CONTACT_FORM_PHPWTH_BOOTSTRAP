@@ -147,8 +147,6 @@ try {
   $stmt = $conn->prepare($sql);
   $stmt->execute();
 
-  
-
   $last_id = $conn->lastInsertId();
   echo "New record created successfully. Last inserted ID is: " . $last_id;
   echo $stmt->rowCount() ." Records UPDATED Sucessfully ";
