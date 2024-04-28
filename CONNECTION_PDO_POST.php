@@ -145,6 +145,7 @@ try {
 
   $sql = "INSERT INTO MyGuests (firstname, lastname, email) VALUES ('John', 'Doe', 'john@example.com')";
   $stmt = $conn->prepare($sql);
+  $stmt->execute();
 
   
 
