@@ -25,11 +25,11 @@ try {
   # comentário de linha
   // Comentários de linha
   
-   $firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_SPECIAL_CHARS);
-   $lastname = filter_var($_POST['lastname'], FILTER_SANITIZE_SPECIAL_CHARS);
-   $message = filter_var($_POST['message'], FILTER_SANITIZE_SPECIAL_CHARS);
-   $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-
+  $firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_SPECIAL_CHARS);
+  $lastname = filter_var($_POST['lastname'], FILTER_SANITIZE_SPECIAL_CHARS);
+  $message = filter_var($_POST['message'], FILTER_SANITIZE_SPECIAL_CHARS);
+  $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+  $senha = md5($_POST['senha']);
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
   $conn->setAttribute(PDO::ATTR_CASE, PDO::CASE_UPPER);
