@@ -37,7 +37,7 @@ try {
   $stmt->bindValue(':firstname', $firstname, PDO::PARAM_STR);
   $stmt->bindValue(':lastname', $lastname, PDO::PARAM_STR);
   $stmt->bindValue(':email', $email, PDO::PARAM_STR);
-  $stmt->bindValue(':senha', $senha, PDO::PARAM_STR );
+  $stmt->bindValue(':senha', $senha, PDO::PARAM_STR);
   $stmt->bindValue(':message', $message, PDO::PARAM_STR);
   $stmt->bindValue(':id', $id, PDO::PARAM_INT);
   
