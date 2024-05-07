@@ -8,7 +8,7 @@ $dbname = "myDBPDO";
 
 $id = $_GET['id'];
 
-if (empty($_POST["firstname"]) || empty($_POST["lastname"]) || empty($_POST["email"]) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+if (empty($_POST["firstname"]) || empty($_POST["lastname"]) || empty($_POST["email"]) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) || empty($_POST['senha'])){
 
     echo "Please enter your first name";
     echo "and your last name & email address";
