@@ -1,10 +1,7 @@
 <?php
 
+include_once './connectionDB.php';
 
-$servername = "localhost";
-$username = "username";
-$password = "password";
-$dbname = "myDBPDO";
 
 $id = $_GET['id'];
 
@@ -23,7 +20,7 @@ if (empty($_POST["firstname"]) || empty($_POST["lastname"]) || empty($_POST["ema
   $senha = filter_var(md5($_POST['senha'], FILTER_SANITIZE_SPECIAL_CHARS)); // hash MD5()
 
 try {
-  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+ 
   /* set the PDO error mode to exception 
 
   Comentários de várias linhas em PHP
