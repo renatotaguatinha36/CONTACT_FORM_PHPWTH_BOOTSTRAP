@@ -20,7 +20,7 @@ if (empty($_POST["firstname"]) || empty($_POST["lastname"]) || empty($_POST["ema
   $lastname = filter_var($_POST['lastname'], FILTER_SANITIZE_SPECIAL_CHARS);
   $message = filter_var($_POST['message'], FILTER_SANITIZE_SPECIAL_CHARS);
   $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-  $senha = md5($_POST['senha']); // hash MD5()
+  $senha = filter_var(md5($_POST['senha'], FILTER_SANITIZE_SPECIAL_CHARS)); // hash MD5()
 
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
