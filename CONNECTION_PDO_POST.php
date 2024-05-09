@@ -3,12 +3,18 @@
 include_once './connectionDB.php';
 
 
+$erros[] = null;
+
 $id = $_GET['id'];
 
 if (empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["email"])) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) || (empty($_POST['senha']))){
 
-    echo "Please enter your first name";
-    echo "and your last name & email address";
+   $erros[0] =  "Please enter your first name";
+   $erros[1] =  "please enter your last name" ; 
+   $erros[2] = "Please enter your email address";
+   $erros[3] = "Digite sua senha";
+
+   echo $erros;
     
 }else{
 
