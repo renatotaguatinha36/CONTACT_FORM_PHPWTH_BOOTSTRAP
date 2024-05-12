@@ -102,7 +102,7 @@ try {
   $stmt->execute();
 
   // echo a message to say the UPDATE succeeded
-  echo $stmt->rowCount() . " records UPDATED successfully";
+  echo  $stmt->rowCount() . "records UPDATED successfully";
 } catch(PDOException $e) {
   echo $sql . "<br>" . $e->getMessage();
   echo $sql . "<br>" . $e->getTraceAsString();
@@ -195,7 +195,7 @@ try {
   $sql = "DELETE FROM MyGuests WHERE id=3";
 
   // use exec() because no results are returned
-  //$conn->exec($sql);
+  $conn->exec($sql);
   // Prepare statement
   $stmt = $conn->prepare($sql);
   $stmt = $conn->prepare("DELETE FROM MyGuests WHERE id=3");
