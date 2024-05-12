@@ -60,7 +60,7 @@ $stmt->execute();
 
 
 
-$lista = $stmt->fetchAll(PDO::FETCH_ASSOC); //retorno associativo 
+while($lista = $stmt->fetchAll(PDO::FETCH_ASSOC)){ //retorno associativo 
 echo '<pre>';
         print_r($lista);
         print($lista);
