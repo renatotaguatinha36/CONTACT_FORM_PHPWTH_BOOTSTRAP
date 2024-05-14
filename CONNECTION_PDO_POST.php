@@ -52,6 +52,9 @@ try {
 } catch(PDOException $e) {
   echo  "</br>" . $e->getMessage() . "</br>" . $e->getCode() .'<br>'. $e->getTraceAsString();
 }
+
+
+}  // fim else
 $querySQL = "SELECT * from tb_usuarios";
 
 $stmt = $conn->query($querySQL); //PDO Statemet
