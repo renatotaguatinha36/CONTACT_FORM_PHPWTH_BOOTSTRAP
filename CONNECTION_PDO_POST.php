@@ -12,7 +12,7 @@ if (empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["
    $erros[] =  "Please enter your first name";
    $erros[] =  "please enter your last name" ; 
    $erros[] = "Please enter your email address";
-   $erros[] = "Digite sua senha";
+   $erros[] = "Please enter your Password";
 
    echo $erros;
     
