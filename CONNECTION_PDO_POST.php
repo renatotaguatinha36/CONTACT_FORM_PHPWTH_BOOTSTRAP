@@ -25,33 +25,33 @@ if (empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["
   $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
   $senha = filter_var(md5($_POST['senha'], FILTER_SANITIZE_SPECIAL_CHARS)); // hash MD5()
 
-try {
- 
-  /* set the PDO error mode to exception 
+    try {
+    
+      /* set the PDO error mode to exception 
 
-  Comentários de várias linhas em PHP
-  
-  */
-  # comentário de linha
-  // Comentários de linha
-  
-  
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-  $conn->setAttribute(PDO::ATTR_CASE, PDO::CASE_UPPER);
-  $stmt = $conn->prepare("INSERT INTO MyGuests (firstname, lastname, email, senha) VALUES (:firstname, :lastname, :email, :senha)");
-  $stmt->bindValue(':firstname', $firstname, PDO::PARAM_STR);
-  $stmt->bindValue(':lastname', $lastname, PDO::PARAM_STR);
-  $stmt->bindValue(':email', $email, PDO::PARAM_STR);
-  $stmt->bindValue(':senha', $senha, PDO::PARAM_STR);
-  $stmt->bindValue(':message', $message, PDO::PARAM_STR);
-  $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-  
-  $stmt->execute();
-  echo "New record created successfully";
-} catch(PDOException $e) {
-  echo  "</br>" . $e->getMessage() . "</br>" . $e->getCode() .'<br>'. $e->getTraceAsString();
-}
+      Comentários de várias linhas em PHP
+      
+      */
+      # comentário de linha
+      // Comentários de linha
+      
+      
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+      $conn->setAttribute(PDO::ATTR_CASE, PDO::CASE_UPPER);
+      $stmt = $conn->prepare("INSERT INTO MyGuests (firstname, lastname, email, senha) VALUES (:firstname, :lastname, :email, :senha)");
+      $stmt->bindValue(':firstname', $firstname, PDO::PARAM_STR);
+      $stmt->bindValue(':lastname', $lastname, PDO::PARAM_STR);
+      $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+      $stmt->bindValue(':senha', $senha, PDO::PARAM_STR);
+      $stmt->bindValue(':message', $message, PDO::PARAM_STR);
+      $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+      
+      $stmt->execute();
+      echo "New record created successfully";
+    } catch(PDOException $e) {
+      echo  "</br>" . $e->getMessage() . "</br>" . $e->getCode() .'<br>'. $e->getTraceAsString();
+    }
 
 
 }  // fim else
