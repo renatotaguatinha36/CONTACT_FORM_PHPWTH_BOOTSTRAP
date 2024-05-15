@@ -7,7 +7,7 @@ $erros[] = null;
 
 $id = $_GET['id'];
 
-if (empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["email"])) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) || (empty($_POST['senha']))){
+if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["email"])) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) || (empty($_POST['senha']))){
 
    $erros[] =  "Please enter your first name";
    $erros[] =  "please enter your last name" ; 
@@ -39,7 +39,7 @@ if (empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
       $conn->setAttribute(PDO::ATTR_CASE, PDO::CASE_UPPER);
-      $stmt = $conn->prepare("INSERT INTO MyGuests (firstname, lastname, email, senha) VALUES (:firstname, :lastname, :email, :senha)");
+      
       $stmt->bindValue(':firstname', $firstname, PDO::PARAM_STR);
       $stmt->bindValue(':lastname', $lastname, PDO::PARAM_STR);
       $stmt->bindValue(':email', $email, PDO::PARAM_STR);
@@ -47,6 +47,7 @@ if (empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["
       $stmt->bindValue(':message', $message, PDO::PARAM_STR);
       $stmt->bindValue(':id', $id, PDO::PARAM_INT);
       
+      $stmt = $conn->prepare("INSERT INTO MyGuests (firstname, lastname, email, senha) VALUES (:firstname, :lastname, :email, :senha)");
       $stmt->execute();
       echo "New record created successfully";
     } catch(PDOException $e) {
