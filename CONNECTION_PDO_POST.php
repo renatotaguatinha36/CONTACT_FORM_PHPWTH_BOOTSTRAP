@@ -9,10 +9,10 @@ $id = $_GET['id'];
 
 if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["email"])) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) || (empty($_POST['senha']))){
 
-   $erros[] =  "Please enter your first name";
-   $erros[] =  "please enter your last name" ; 
-   $erros[] = "Please enter your email address";
-   $erros[] = "Please enter your Password";
+   $erros[0] =  "Please enter your first name";
+   $erros[1] =  "please enter your last name" ; 
+   $erros[2] = "Please enter your email address";
+   $erros[3] = "Please enter your Password";
 
    echo $erros;
     
