@@ -14,10 +14,10 @@ if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["e
    $erros[2] = "Please enter your email address";
    $erros[3] = "Please enter your Password";
 
-   echo $erros[0] ."<br>";
-   echo $erros[1] ."<br>";
-   echo $erros[2] ."<br>";
-   echo $erros[3] ."<br>";
+   echo $erros[0] ."</br>";
+   echo $erros[1] ."</br>";
+   echo $erros[2] ."</br>";
+   echo $erros[3] ."</br>";
     
 }else{
 
