@@ -19,7 +19,7 @@ if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["e
    echo $erros[2] ."</br>";
    echo $erros[3] ."</br>";
     
-}else{
+}else{ // início else
 
 
   $firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_SPECIAL_CHARS);
