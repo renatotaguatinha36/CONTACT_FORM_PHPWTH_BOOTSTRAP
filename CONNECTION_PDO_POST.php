@@ -19,7 +19,7 @@ if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["e
    echo $erros[2] ."</br>";
    echo $erros[3] ."</br>";
     
-}else{ // início else
+}else{                  // início else
 
 
   $firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_SPECIAL_CHARS);
@@ -44,7 +44,7 @@ if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["e
       
       $stmt = $conn->prepare("INSERT INTO MyGuests (firstname, lastname, email, senha) VALUES (:firstname, :lastname, :email, :senha)");
       $stmt->execute();
-      echo "New record created successfully";
+      echo "</br>" . "New record created successfully";
     } catch(PDOException $e) {
       echo  "</br>" . $e->getMessage() . "</br>" . $e->getCode() .'<br>'. $e->getTraceAsString();
     }
