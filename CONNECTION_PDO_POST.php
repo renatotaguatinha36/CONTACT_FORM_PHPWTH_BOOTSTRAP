@@ -53,7 +53,7 @@ if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["e
 }  // fim else
 
 
-/* ########################################################  LOOP WHILE  ######################################################### */
+/* ########################################################  LOOP WHILE  ##################################################### */
 
 while($lista = $stmt->fetchAll(PDO::FETCH_ASSOC)){
 
@@ -98,7 +98,7 @@ $conn = null;
 ?>
 
 
-#################################################### UPDATE  MYSQL ##############################################################
+/* #################################################### UPDATE  MYSQL ######################################################### */
 
 <?php
 $servername = "localhost";
@@ -106,6 +106,24 @@ $username = "username";
 $password = "password";
 $dbname = "myDBPDO";
 
+$erros[] = null;
+
+$id = $_GET['id'];
+
+if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["email"])) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) || (empty($_POST['senha']))){
+
+   $erros[0] . $_POST['firstname'] =  "Please enter your first name";
+   $erros[1] =  "please enter your last name" ; 
+   $erros[2] = "Please enter your email address";
+   $erros[3] = "Please enter your Password";
+
+   echo $erros[0] ."</br>";
+   echo $erros[1] ."</br>";
+   echo $erros[2] ."</br>";
+   echo $erros[3] ."</br>";
+    
+}else{   // início else
+                 
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
   // set the PDO error mode to exception
@@ -128,14 +146,14 @@ try {
   echo $sql . "<br>" . $e->getTraceAsString();
 }
 
-
+}
 while($lista = $stmt->fetchAll(PDO::FETCH_ASSOC)){
 
   echo  "<pre>";
        print_r($lista);
   echo  "</pre>";
-}
 
+}
 
 $conn = null;
 ?>
@@ -145,6 +163,7 @@ $conn = null;
 #################################################### LAST INSERTED ID #############################################################
 
 <?php
+
 $servername = "localhost";
 $username = "username";
 $password = "password";
