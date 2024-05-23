@@ -52,6 +52,9 @@ if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["e
 
 }  // fim else
 
+
+/* ########################################################  LOOP WHILE  ######################################################### */
+
 while($lista = $stmt->fetchAll(PDO::FETCH_ASSOC)){
 
   echo  "<pre>";
