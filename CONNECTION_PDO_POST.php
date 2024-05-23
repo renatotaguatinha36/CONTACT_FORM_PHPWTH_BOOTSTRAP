@@ -42,7 +42,7 @@ if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["e
       $stmt->bindValue(':message', $message, PDO::PARAM_STR);
       $stmt->bindValue(':id', $id, PDO::PARAM_INT);
       
-      $stmt = $conn->prepare("INSERT INTO MyGuests (firstname, lastname, email, senha) VALUES (:firstname, :lastname, :email, :senha)");
+      $stmt = $conn->prepare("INSERT INTO MyGuests (firstname, lastname, email, senha) VALUES (:firstname, :lastname, :email, :senha) ");
       $stmt->execute();
       echo "</br>" . "New record created successfully";
     } catch(PDOException $e) {
@@ -51,7 +51,23 @@ if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["e
 
 
 }  // fim else
-$querySQL = "SELECT * from tb_usuarios";
+
+while($lista = $stmt->fetchAll(PDO::FETCH_ASSOC)){
+
+  echo  "<pre>";
+       print_r($lista);
+  echo  "</pre>";
+}
+/* ########################################################################################################################### */
+
+while($lista = $stmt->fetchAll(PDO::FETCH_ASSOC)){
+
+  echo  "<pre>";
+       print_r($lista);
+  echo  "</pre>";
+}
+
+$querySQL = "SELECT * from tb_usuarios"; 
 
 $stmt = $conn->query($querySQL); //PDO Statemet
 $stmt = $conn->prepare($querySQL); // Com método prepare()
