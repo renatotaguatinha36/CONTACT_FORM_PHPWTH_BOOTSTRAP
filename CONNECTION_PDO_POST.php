@@ -5,7 +5,7 @@ include_once "./connectionDB.php";
 
 $erros[] = null;
 
-$id = $_GET['id'];
+$id = $_GET['id']; // pegar ID do site
 
 if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["email"])) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) || (empty($_POST['senha']))){
 
