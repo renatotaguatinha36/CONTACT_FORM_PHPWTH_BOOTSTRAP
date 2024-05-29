@@ -11,7 +11,7 @@ if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["e
 
    $erros[0] . $_POST['firstname'] =  "Please enter your First Name";
    $erros[1] . $_POST["lastname"] =  "please enter your last name" ; 
-   $erros[2] = "Please enter your email address";
+   $erros[2] . $_POST['email'] = "Please enter your email address";
    $erros[3] = "Please enter your Password"; ##################
 
    echo $erros[0] ."</br>";
