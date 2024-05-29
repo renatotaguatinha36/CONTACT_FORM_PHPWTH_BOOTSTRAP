@@ -10,7 +10,7 @@ $id = $_GET['id']; // pegar ID do site
 if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["email"])) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) || (empty($_POST['senha']))){
 
    $erros[0] . $_POST['firstname'] =  "Please enter your First Name";
-   $erros[1] =  "please enter your last name" ; 
+   $erros[1] . $_POST["lastname"] =  "please enter your last name" ; 
    $erros[2] = "Please enter your email address";
    $erros[3] = "Please enter your Password"; ##################
 
