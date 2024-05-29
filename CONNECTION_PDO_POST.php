@@ -1,6 +1,6 @@
 <?php
 
-require_once "./connectionDB.php";
+require_once "./connectionDB.php"; // require_once
 
 
 $erros[] = null;
