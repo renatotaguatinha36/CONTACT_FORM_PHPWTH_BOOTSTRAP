@@ -29,6 +29,10 @@ if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["e
   $senha = filter_var(md5($_POST['senha'], FILTER_SANITIZE_SPECIAL_CHARS)); // hash MD5()
 
     try {
+
+
+      $conn->setAttribute(PDO::ATTR_AUTOCOMMIT,0);
+      $conn->setAttribute(PDO::ATTR_TIMEOUT, 1);
     
     
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -254,3 +258,5 @@ while($lista = $stmt->fetchAll(PDO::FETCH_ASSOC)){
 
 $conn = null;
 ?>
+
+
