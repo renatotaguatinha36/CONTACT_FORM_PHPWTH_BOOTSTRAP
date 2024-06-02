@@ -48,7 +48,7 @@ if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["e
       
       $stmt = $conn->prepare("INSERT INTO MyGuests (firstname, lastname, email, senha) VALUES (:firstname, :lastname, :email, :senha) ");
       $stmt->execute();
-      echo "</br>" . "New record created successfully";
+      echo "</br> New record created successfully";
     } catch(PDOException $e) {
         die("</br>" . $e->getMessage() . "</br>" . $e->getCode() ."<br>". $e->getTraceAsString());
       
