@@ -75,7 +75,7 @@ while($lista = $stmt->fetchAll(PDO::FETCH_ASSOC)){
   echo  "</pre>";
 }
 
-$querySQL = "SELECT * FROM tb_usuarios WHERE id= $id "; 
+$querySQL = "SELECT * FROM tb_usuarios WHERE id = $id "; 
 
 $stmt = $conn->query($querySQL); //PDO Statemet
 $stmt = $conn->prepare($querySQL); // Com método prepare()
