@@ -50,9 +50,10 @@ if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["e
       $stmt->execute();
       echo "</br> New record created successfully </br> ";
       die("</br> New record created successfully </br> ");
-      
+
     } catch(PDOException $e) {
         die("</br>" . $e->getMessage() . "</br>" . $e->getCode() ."<br>". $e->getTraceAsString());
+        echo(("</br>" . $e->getMessage() . "</br>" . $e->getCode() ."<br>". $e->getTraceAsString()));
       
     }
 
