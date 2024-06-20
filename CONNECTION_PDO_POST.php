@@ -220,7 +220,7 @@ while($lista = $stmt->fetchAll(PDO::FETCH_ASSOC)){
   echo  "</pre>";
 }
 
-
+header("location: produto-lista.php");
 $conn = null;
 ?>
 
