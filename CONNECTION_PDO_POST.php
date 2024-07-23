@@ -1,6 +1,6 @@
 <?php
 
-include_once "./connectionDB.php";
+include_once "./connectionDB.php"; //ffff
 
 
 $erros[] = null;
@@ -42,11 +42,12 @@ if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["e
       $stmt->bindValue(':message', $message, PDO::PARAM_STR);
       $stmt->bindValue(':id', $id, PDO::PARAM_INT);
       
-      $stmt = $conn->prepare("INSERT INTO MyGuests (firstname, lastname, email, senha) VALUES (:firstname, :lastname, :email, :senha) ");
+      $stmt = $conn->prepare(" INSERT INTO MyGuests (firstname, lastname, email, senha) VALUES (:firstname, :lastname, :email, :senha) ");
       $stmt->execute();
       echo "</br>" . "New record created successfully";
     } catch(PDOException $e) {
       echo  "</br>" . $e->getMessage() . "</br>" . $e->getCode() ."<br>". $e->getTraceAsString();
+      die ("</br>" . $e->getMessage() . "</br>" . $e->getCode() ."<br>". $e->getTraceAsString());
     }
 
 
