@@ -1,6 +1,6 @@
 <?php
 
-include_once "./connectionDB.php"; //ffff
+include_once "./connectionDB.php";
 
 
 $erros[] = null;
@@ -10,9 +10,9 @@ $id = $_GET['id']; // pegar ID do site
 if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["email"])) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) || (empty($_POST['senha']))){
 
    $erros[0] . $_POST['firstname'] =  "Please enter your First Name";
-   $erros[1] =  "please enter your last name" ; 
-   $erros[2] = "Please enter your email address";
-   $erros[3] = "Please enter your Password";
+   $erros[1] . $_POST["lastname"] =  "please enter your last name" ; 
+   $erros[2] . $_POST['email'] = "Please enter your email address";
+   $erros[3] . $_POST['senha'] = "Please enter your Password"; 
 
    echo $erros[0] ."</br>";
    echo $erros[1] ."</br>";
@@ -29,6 +29,10 @@ if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["e
   $senha = filter_var(md5($_POST['senha'], FILTER_SANITIZE_SPECIAL_CHARS)); // hash MD5()
 
     try {
+
+
+      $conn->setAttribute(PDO::ATTR_AUTOCOMMIT,0);
+      $conn->setAttribute(PDO::ATTR_TIMEOUT, 1);
     
     
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -43,11 +47,24 @@ if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["e
       $stmt->bindValue(':id', $id, PDO::PARAM_INT);
       
       $stmt = $conn->prepare(" INSERT INTO MyGuests (firstname, lastname, email, senha) VALUES (:firstname, :lastname, :email, :senha) ");
+
+      $stmt = $conn->prepare(" UPDATE MyGuests SET firstname='RENATO', lastname='Doe', email='renatoguara2025@gmail.com', senha='123456' WHERE id=$id ");
+
       $stmt->execute();
-      echo "</br>" . "New record created successfully";
+      echo "</br> New record created successfully </br> ";
+      die("</br> New record created successfully </br> ");
+
     } catch(PDOException $e) {
       echo  "</br>" . $e->getMessage() . "</br>" . $e->getCode() ."<br>". $e->getTraceAsString();
-      die ("</br>" . $e->getMessage() . "</br>" . $e->getCode() ."<br>". $e->getTraceAsString());
+    }
+
+    catch(Throwable $e){
+
+      echo  "</br>" . $e->getMessage() . "</br>" . $e->getCode() ."<br>". $e->getTraceAsString();
+
+    }catch(Throwable $e){
+
+      echo  "</br>" . $e->getMessage() . "</br>" . $e->getCode() ."<br>". $e->getTraceAsString();
     }
 
 
@@ -71,7 +88,7 @@ while($lista = $stmt->fetchAll(PDO::FETCH_ASSOC)){
   echo  "</pre>";
 }
 
-$querySQL = "SELECT * FROM tb_usuarios"; 
+$querySQL = "SELECT * FROM tb_usuarios WHERE id = $id "; 
 
 $stmt = $conn->query($querySQL); //PDO Statemet
 $stmt = $conn->prepare($querySQL); // Com método prepare()
@@ -122,6 +139,7 @@ if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["e
    echo $erros[1] ."</br>";
    echo $erros[2] ."</br>";
    echo $erros[3] ."</br>";
+   printf($erros[1]);
     
 }else{   // início else
                  
@@ -152,6 +170,7 @@ while($lista = $stmt->fetchAll(PDO::FETCH_ASSOC)){
 
   echo  "<pre>";
        print_r($lista);
+       
   echo  "</pre>";
 
 }
@@ -210,7 +229,7 @@ while($lista = $stmt->fetchAll(PDO::FETCH_ASSOC)){
   echo  "</pre>";
 }
 
-
+header("location: produto-lista.php");
 $conn = null;
 ?>
 
@@ -255,3 +274,68 @@ while($lista = $stmt->fetchAll(PDO::FETCH_ASSOC)){
 
 $conn = null;
 ?>
+
+
+####################################################################### FORMS VALIDATION ######################################################
+
+<?php
+
+
+// define variables and set to empty values
+$name = $email = $gender = $comment = $website = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $name = test_input($_POST["name"]);
+  $email = test_input($_POST["email"]);
+  $website = test_input($_POST["website"]);
+  $comment = test_input($_POST["comment"]);
+  $gender = test_input($_POST["gender"]);
+}
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
+// define variables and set to empty values
+$nameErr = $emailErr = $genderErr = $websiteErr = "";
+$name = $email = $gender = $comment = $website = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["name"])) {
+    $nameErr = "Name is required";
+  } else {
+    $name = test_input($_POST["name"]);
+  }
+
+  if (empty($_POST["email"])) {
+    $emailErr = "Email is required";
+  } else {
+    $email = test_input($_POST["email"]);
+  }
+  
+  if (empty($_POST["website"])) {
+    $website = "";
+  } else {
+    $website = test_input($_POST["website"]);
+  }
+  
+  if (empty($_POST["comment"])) {
+    $comment = "";
+  } else {
+    $comment = test_input($_POST["comment"]);
+  }
+  
+  if (empty($_POST["gender"])) {
+    $genderErr = "Gender is required";
+  } else {
+    $gender = test_input($_POST["gender"]);
+  }
+}
+
+
+?>
+
+
