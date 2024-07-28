@@ -1,6 +1,6 @@
 <?php
 
-require_once "./connectionDB.php"; // require_once
+include_once "./connectionDB.php";
 
 
 $erros[] = null;
@@ -47,15 +47,24 @@ if(empty($_POST["firstname"]) || (empty($_POST["lastname"])) || (empty($_POST["e
       $stmt->bindValue(':id', $id, PDO::PARAM_INT);
       
       $stmt = $conn->prepare(" INSERT INTO MyGuests (firstname, lastname, email, senha) VALUES (:firstname, :lastname, :email, :senha) ");
+
+      $stmt = $conn->prepare(" UPDATE MyGuests SET firstname='RENATO', lastname='Doe', email='renatoguara2025@gmail.com', senha='123456' WHERE id=$id ");
+
       $stmt->execute();
       echo "</br> New record created successfully </br> ";
       die("</br> New record created successfully </br> ");
 
     } catch(PDOException $e) {
-      
-        die("</br>" . $e->getMessage() . "</br>" . $e->getCode() ."<br>". $e->getTraceAsString());
-        echo(("</br>" . $e->getMessage() . "</br>" . $e->getCode() ."<br>". $e->getTraceAsString()));
-      
+      echo  "</br>" . $e->getMessage() . "</br>" . $e->getCode() ."<br>". $e->getTraceAsString();
+    }
+
+    catch(Throwable $e){
+
+      echo  "</br>" . $e->getMessage() . "</br>" . $e->getCode() ."<br>". $e->getTraceAsString();
+
+    }catch(Throwable $e){
+
+      echo  "</br>" . $e->getMessage() . "</br>" . $e->getCode() ."<br>". $e->getTraceAsString();
     }
 
 
@@ -328,3 +337,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 ?>
+
+
